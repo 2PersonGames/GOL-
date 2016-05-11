@@ -1,0 +1,152 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Net;
+using Microsoft.Xna.Framework.Storage;
+
+namespace GOL.Objects
+{
+    class GameOfLife
+    {
+        //false = dead
+        //true = alive
+        bool[,] currentGOL;
+        public bool[,] CurrentGOL
+        {
+            get { return currentGOL; }
+            set
+            {
+                for (int i = 0; i < currentGOL.Length; i++)
+                {
+                    for (int j = 0; j < currentGOL.Length; j++)
+                    {
+                        currentGOL[i, j] = value[i, j] ;
+                    }
+                }
+            }
+        }
+        bool[,] previousGOL;
+        public bool[,] PreviousGOL
+        {
+            get { return previousGOL; }
+            set
+            {
+                for (int i = 0; i < previousGOL.Length; i++)
+                {
+                    for (int j = 0; j < previousGOL.Length; j++)
+                    {
+                        previousGOL[i, j] = value[i, j];
+                    }
+                }
+            }
+        }
+
+        int height;
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }
+        int width;
+
+        public GameOfLife(int nMapWidth, int nMapHeight)
+        {
+            //Instance code
+            currentGOL = new bool[nMapWidth, nMapHeight];
+            previousGOL = new bool[nMapWidth, nMapHeight];
+
+            Height = nMapHeight;
+            Width = nMapWidth;
+        }
+
+        public void Load()
+        {
+            //Code for different setups
+        }
+
+        public void Update()
+        {
+            //Update code
+            //First thing, make a copy of the current game state
+            PreviousGOL = CurrentGOL;
+
+            //Apply rules
+            for (int i = 0; i < arrayLength; i++)
+            {
+                for (int j = 0; j < arrayHeight; j++)
+                {
+                    ApplyRules(i, j);
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            //Drawing code
+        }
+
+        void ApplyRules(int row, int column)
+        {
+            int aliveNeighbours = 0;
+
+            if (row > 0 && previousGOL[row - 1, column])
+            {
+                aliveNeighbours++;
+            }
+            if (row > 0 && column > 0 && previousGOL[row - 1, column - 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column > 0 && previousGOL[row, column - 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column > 0 && row < previousGOL.Length - 1 && previousGOL[row + 1, column - 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column < previousGOL.Length - 1 && previousGOL[row + 1, column])
+            {
+                aliveNeighbours++;
+            }
+            if (column < previousGOL.Length - 1 && row < previousGOL.Length - 1 && previousGOL[row + 1, column + 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column < previousGOL.Length - 1 && previousGOL[row, column + 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column < previousGOL.Length - 1 && row > 0 && previousGOL[row - 1, column + 1])
+            {
+                aliveNeighbours++;
+            }
+
+            if (previousGOL[row, column])
+            {
+                if (aliveNeighbours < 2)
+                {
+                    //Dies of loneliness
+                    currentGOL[row, column] = false;
+                }
+                else if (aliveNeighbours > 3)
+                {
+                    //Dies of overcrowding
+                    currentGOL[row, column] = false;
+                }
+            }
+            else if (aliveNeighbours == 3)
+            {
+                //Resurrect
+                currentGOL[row, column] = true;
+            }
+        }
+    }
+}

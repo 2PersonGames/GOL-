@@ -1,0 +1,6 @@
+X:\Sam\CGP\Spring Semester, Year One\Games Design\Week 2\GOL++\GOL++\obj\x86\Debug\ResolveAssemblyReference.cache
+X:\Sam\CGP\Spring Semester, Year One\Games Design\Week 2\GOL++\GOL++\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+X:\Sam\CGP\Spring Semester, Year One\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\GOL++.exe
+X:\Sam\CGP\Spring Semester, Year One\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\GOL++.pdb
+X:\Sam\CGP\Spring Semester, Year One\Games Design\Week 2\GOL++\GOL++\obj\x86\Debug\GOL++.exe
+X:\Sam\CGP\Spring Semester, Year One\Games Design\Week 2\GOL++\GOL++\obj\x86\Debug\GOL++.pdb

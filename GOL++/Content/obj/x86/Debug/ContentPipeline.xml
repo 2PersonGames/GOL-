@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Sprites\grid.png</Source>
+      <Name>Sprites\grid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\grid.xnb</Output>
+      <Time>2010-02-07T17:58:40+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\square.png</Source>
+      <Name>Sprites\square</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\square.xnb</Output>
+      <Time>2010-02-05T23:04:52+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\customGame.png</Source>
+      <Name>Sprites\Menu\customGame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\customGame.xnb</Output>
+      <Time>2010-02-05T23:59:48+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\gliderGun.png</Source>
+      <Name>Sprites\Menu\gliderGun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\gliderGun.xnb</Output>
+      <Time>2010-02-05T23:59:40+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\leave.png</Source>
+      <Name>Sprites\Menu\leave</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\leave.xnb</Output>
+      <Time>2010-02-05T23:59:34+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\customPointer.png</Source>
+      <Name>Sprites\customPointer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\customPointer.xnb</Output>
+      <Time>2010-02-10T13:16:00.9519405+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\block1.png</Source>
+      <Name>Sprites\Menu\block1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\block1.xnb</Output>
+      <Time>2010-02-09T03:11:06+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\block2.png</Source>
+      <Name>Sprites\Menu\block2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\block2.xnb</Output>
+      <Time>2010-02-09T03:10:58+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\block3.png</Source>
+      <Name>Sprites\Menu\block3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\block3.xnb</Output>
+      <Time>2010-02-09T03:10:52+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\background.png</Source>
+      <Name>Sprites\background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\background.xnb</Output>
+      <Time>2010-02-09T19:52:54+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\ControllerButtons\a.png</Source>
+      <Name>Sprites\ControllerButtons\a</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\ControllerButtons\a.xnb</Output>
+      <Time>2010-02-09T20:28:22+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\ControllerButtons\b.png</Source>
+      <Name>Sprites\ControllerButtons\b</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\ControllerButtons\b.xnb</Output>
+      <Time>2010-02-09T20:29:54+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\ControllerButtons\x.png</Source>
+      <Name>Sprites\ControllerButtons\x</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\ControllerButtons\x.xnb</Output>
+      <Time>2010-02-09T20:28:44+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\gameover.jpg</Source>
+      <Name>Sprites\Menu\gameover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\gameover.xnb</Output>
+      <Time>2010-02-10T16:12:53.4500304+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\font1.spritefont</Source>
+      <Name>Sprites\font1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\font1.xnb</Output>
+      <Time>2010-02-10T16:42:18.9375131+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\begin.wav</Source>
+      <Name>Music\begin</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Music\begin.xnb</Output>
+      <Time>2010-02-08T02:54:12+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\loop.wav</Source>
+      <Name>Music\loop</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Music\loop.xnb</Output>
+      <Time>2010-02-08T02:54:12+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Menu\rules.png</Source>
+      <Name>Sprites\Menu\rules</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\Sprites\Menu\rules.xnb</Output>
+      <Time>2010-02-10T16:39:00.7251837+00:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\Content\</RootDirectory>
+      <LoggerRootDirectory>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\</LoggerRootDirectory>
+      <IntermediateDirectory>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>\\ctstudent2\users\100068439\My Documents\Year1\Spring Semester\Games Design\Week 2\GOL++\GOL++\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2009-05-28T01:16:14+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2009-05-28T01:16:06+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2009-05-28T01:16:16+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2009-05-28T01:16:26+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2009-05-28T01:16:12+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2009-05-28T01:16:06+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-11-10T10:35:05.2392578+00:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

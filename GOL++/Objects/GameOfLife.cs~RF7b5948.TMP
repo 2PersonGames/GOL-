@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Net;
+using Microsoft.Xna.Framework.Storage;
+
+namespace GOL.Objects
+{
+    class GameOfLife
+    {
+        //false = dead
+        //true = alive
+        bool[,] currentGOL;
+        public bool[,] CurrentGOL
+        {
+            get { return currentGOL; }
+            set
+            {
+                for (int i = 0; i < currentGOL.Length; i++)
+                {
+                    for (int j = 0; j < currentGOL.Length; j++)
+                    {
+                        currentGOL[i, j] = value[i, j] ;
+                    }
+                }
+            }
+        }
+        bool[,] previousGOL;
+        public bool[,] PreviousGOL
+        {
+            get { return previousGOL; }
+            set
+            {
+                for (int i = 0; i < previousGOL.Length; i++)
+                {
+                    for (int j = 0; j < previousGOL.Length; j++)
+                    {
+                        previousGOL[i, j] = value[i, j];
+                    }
+                }
+            }
+        }
+
+        public GameOfLife(int nMapSize)
+        {
+            //Instance code
+            currentGOL = new bool[nMapSize, nMapSize];
+            previousGOL = new bool[nMapSize, nMapSize];
+        }
+
+        public void Load()
+        {
+            //Code for different setups
+        }
+
+        public void Update()
+        {
+            //Update code
+            //First thing, make a copy of the current game state
+            PreviousGOL = CurrentGOL;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            //Drawing code
+        }
+
+        void ApplyRules()
+        {
+        }
+    }
+}

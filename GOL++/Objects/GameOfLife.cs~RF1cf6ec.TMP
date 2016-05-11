@@ -1,0 +1,377 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Net;
+using Microsoft.Xna.Framework.Storage;
+
+namespace GOL.Objects
+{
+    class GameOfLife
+    {
+        //false = dead
+        //true = alive
+        bool[,] currentGOL;
+        public bool[,] CurrentGOL
+        {
+            get { return currentGOL; }
+            set
+            {
+                for (int i = 0; i < currentGOL.Length; i++)
+                {
+                    for (int j = 0; j < currentGOL.Length; j++)
+                    {
+                        currentGOL[i, j] = value[i, j] ;
+                    }
+                }
+            }
+        }
+        bool[,] previousGOL;
+        public bool[,] PreviousGOL
+        {
+            get { return previousGOL; }
+            set
+            {
+                for (int i = 0; i < Width; i++)
+                {
+                    for (int j = 0; j < Height; j++)
+                    {
+                        previousGOL[i, j] = value[i, j];
+                    }
+                }
+            }
+        }
+
+        int height;
+        public int Height
+        {
+            get { return height; }
+            set
+            {
+                height = value;
+                if (height < 1)
+                {
+                    height = 1;
+                }
+            }
+        }
+        int width;
+        public int Width
+        {
+            get { return width; }
+            set
+            {
+                width = value;
+                if (width < 1)
+                {
+                    width = 1;
+                }
+            }
+        }
+
+        Rectangle drawAreaRect;
+        Rectangle drawSquareRect;
+        Texture2D aliveSquare;
+        public Texture2D AliveSquare
+        {
+            get { return aliveSquare; }
+            set { aliveSquare = value; }
+        }
+
+        public GameOfLife(Texture2D nAliveSquare, int nMapWidth, int nMapHeight, Rectangle viewportRect)
+        {
+            //Instance code
+            AliveSquare = nAliveSquare;
+
+            Height = nMapHeight;
+            Width = nMapWidth;
+
+            currentGOL = new bool[Width, Height];
+            previousGOL = new bool[Width, Height];
+
+            drawAreaRect = new Rectangle(viewportRect.X + viewportRect.Width - viewportRect.Height, viewportRect.Y, viewportRect.Height, viewportRect.Height);
+            drawSquareRect = new Rectangle(drawAreaRect.X, drawAreaRect.Y, drawAreaRect.Width / Width, drawAreaRect.Height / Height);
+        }
+
+        public void Load(int gOLVersion)
+        {
+            //Code for different setups
+            //GOL[column, row]
+            switch (gOLVersion)
+            {
+                default:
+                    {
+                        //Test version
+                        for (int i = 0; i < Width; i++)
+                        {
+                            for (int j = 0; j < Height; j++)
+                            {
+                                CurrentGOL[i, j] = true;
+                            }
+                        }
+                        break;
+                    }
+                case 0:
+                    {
+                        //Glider gun
+                        GliderGun();
+                        break;
+                    }
+                case 1:
+                    {
+                        BlockLayingSwitchEngineOne();
+                        break;
+                    }
+                case 2:
+                    {
+                        BlockLayingSwitchEngineTwo();
+                        break;
+                    }
+                case 3:
+                    {
+                        BlockLayingSwitchEngineThree();
+                        break;
+                    }
+            }
+        }
+
+        public void Update()
+        {
+            //Update code
+            //First thing, make a copy of the current game state
+            PreviousGOL = CurrentGOL;
+
+            //Apply rules
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    ApplyRules(i, j);
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            //Drawing code
+            for (int i = 0; i < Width; i++)
+            {
+                for (int j = 0; j < Height; j++)
+                {
+                    drawSquareRect.Y = drawSquareRect.Height * j;
+                    drawSquareRect.X = (drawSquareRect.Width * i) + drawAreaRect.X;
+                    if (currentGOL[i, j])
+                    {
+                        spriteBatch.Draw(AliveSquare, drawSquareRect, Color.White);
+                    }
+                    else
+                    {
+                        drawSquareRect.Y = drawSquareRect.Height * j;
+                        drawSquareRect.X = (drawSquareRect.Width * i) + drawAreaRect.X;
+                        spriteBatch.Draw(AliveSquare, drawSquareRect, Color.White);
+                    }
+                }
+            }
+        }
+
+        void ApplyRules(int row, int column)
+        {
+            int aliveNeighbours = 0;
+
+            if (row > 0 && previousGOL[row - 1, column])
+            {
+                aliveNeighbours++;
+            }
+            if (column > 0 && row > 0 && previousGOL[row - 1, column - 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column > 0 && previousGOL[row, column - 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column > 0 && row < Width - 1 && previousGOL[row + 1, column - 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column < Height - 1 && row < Width - 1 && previousGOL[row + 1, column])
+            {
+                aliveNeighbours++;
+            }
+            if (column < Height - 1 && row < Width - 1 && previousGOL[row + 1, column + 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column < Height - 1 && previousGOL[row, column + 1])
+            {
+                aliveNeighbours++;
+            }
+            if (column < Height - 1 && row > 0 && previousGOL[row - 1, column + 1])
+            {
+                aliveNeighbours++;
+            }
+
+            if (previousGOL[row, column])
+            {
+                if (aliveNeighbours < 2)
+                {
+                    //Dies of loneliness
+                    currentGOL[row, column] = false;
+                }
+                else if (aliveNeighbours > 3)
+                {
+                    //Dies of overcrowding
+                    currentGOL[row, column] = false;
+                }
+            }
+            else if (aliveNeighbours == 3)
+            {
+                //Resurrect
+                currentGOL[row, column] = true;
+            }
+        }
+
+        //Create gliders on the 15th generation,
+        //Then every 30 generations after
+        void GliderGun()
+        {
+            //Needs width >= 36 and height >= 9
+            if (Width >= 36 && Height >= 9)
+            {
+                CurrentGOL[0, 4] = true;
+                CurrentGOL[0, 5] = true;
+                CurrentGOL[1, 4] = true;
+                CurrentGOL[1, 5] = true;
+
+                CurrentGOL[10, 4] = true;
+                CurrentGOL[10, 5] = true;
+                CurrentGOL[10, 6] = true;
+                CurrentGOL[11, 3] = true;
+                CurrentGOL[11, 7] = true;
+                CurrentGOL[12, 2] = true;
+                CurrentGOL[12, 8] = true;
+                CurrentGOL[13, 2] = true;
+                CurrentGOL[13, 8] = true;
+                CurrentGOL[14, 5] = true;
+                CurrentGOL[15, 3] = true;
+                CurrentGOL[15, 7] = true;
+                CurrentGOL[16, 4] = true;
+                CurrentGOL[16, 5] = true;
+                CurrentGOL[16, 6] = true;
+                CurrentGOL[17, 5] = true;
+
+                CurrentGOL[20, 2] = true;
+                CurrentGOL[20, 3] = true;
+                CurrentGOL[20, 4] = true;
+                CurrentGOL[21, 2] = true;
+                CurrentGOL[21, 3] = true;
+                CurrentGOL[21, 4] = true;
+                CurrentGOL[22, 1] = true;
+                CurrentGOL[22, 5] = true;
+                CurrentGOL[24, 0] = true;
+                CurrentGOL[24, 1] = true;
+                CurrentGOL[24, 5] = true;
+                CurrentGOL[24, 6] = true;
+
+                CurrentGOL[34, 2] = true;
+                CurrentGOL[34, 3] = true;
+                CurrentGOL[35, 2] = true;
+                CurrentGOL[35, 3] = true;
+            }
+        }
+
+        //Next three create patterns which lay blocks indefinately
+        void BlockLayingSwitchEngineOne()
+        {
+            //Needs width >= 10 and height >= 8
+            if (Width >= 10 && Height >= 8)
+            {
+                CurrentGOL[1, 6] = true;
+
+                CurrentGOL[3, 5] = true;
+                CurrentGOL[3, 6] = true;
+
+                CurrentGOL[5, 2] = true;
+                CurrentGOL[5, 3] = true;
+                CurrentGOL[5, 4] = true;
+
+                CurrentGOL[7, 1] = true;
+                CurrentGOL[7, 2] = true;
+                CurrentGOL[7, 3] = true;
+
+                CurrentGOL[8, 2] = true;
+            }
+        }
+
+        void BlockLayingSwitchEngineTwo()
+        {
+            //Needs width >= 7 and height >= 7
+            if (Width >= 7 && Height >= 7)
+            {
+                CurrentGOL[1, 1] = true;
+                CurrentGOL[1, 2] = true;
+                CurrentGOL[1, 5] = true;
+
+                CurrentGOL[2, 1] = true;
+                CurrentGOL[2, 4] = true;
+
+                CurrentGOL[3, 1] = true;
+                CurrentGOL[3, 4] = true;
+                CurrentGOL[3, 5] = true;
+
+                CurrentGOL[4, 3] = true;
+
+                CurrentGOL[5, 1] = true;
+                CurrentGOL[5, 3] = true;
+                CurrentGOL[5, 4] = true;
+                CurrentGOL[5, 5] = true;
+            }
+        }
+
+        void BlockLayingSwitchEngineThree()
+        {
+            //Needs width >= 41 and height >= 3
+            if (Width >= 7 && Height >= 7)
+            {
+                CurrentGOL[1, 1] = true;
+                CurrentGOL[2, 1] = true;
+                CurrentGOL[3, 1] = true;
+                CurrentGOL[4, 1] = true;
+                CurrentGOL[5, 1] = true;
+                CurrentGOL[6, 1] = true;
+                CurrentGOL[7, 1] = true;
+                CurrentGOL[8, 1] = true;
+
+                CurrentGOL[10, 1] = true;
+                CurrentGOL[11, 1] = true;
+                CurrentGOL[12, 1] = true;
+                CurrentGOL[13, 1] = true;
+                CurrentGOL[14, 1] = true;
+
+                CurrentGOL[18, 1] = true;
+                CurrentGOL[19, 1] = true;
+                CurrentGOL[20, 1] = true;
+
+                CurrentGOL[27, 1] = true;
+                CurrentGOL[28, 1] = true;
+                CurrentGOL[29, 1] = true;
+                CurrentGOL[30, 1] = true;
+                CurrentGOL[31, 1] = true;
+                CurrentGOL[32, 1] = true;
+                CurrentGOL[33, 1] = true;
+
+                CurrentGOL[35, 1] = true;
+                CurrentGOL[36, 1] = true;
+                CurrentGOL[37, 1] = true;
+                CurrentGOL[38, 1] = true;
+                CurrentGOL[39, 1] = true;
+            }
+        }
+    }
+}
